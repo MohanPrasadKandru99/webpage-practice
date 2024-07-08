@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import BreedingRhombusSpinner from './BreedingRhombusSpinner';
+import Homepage from './Homepage';
 
-function App() {
+const App = () => {
+  const [loading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 3000);
+  //   return () => clearTimeout(timer);
+  // }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {loading ? (
+        <div className="spinner-container">
+          <BreedingRhombusSpinner color="red" />
+        </div>
+      ) : (
+        <>
+          <Homepage />
+        </>
+      )}
     </div>
   );
-}
+};
 
 export default App;
